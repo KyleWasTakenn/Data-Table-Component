@@ -62,22 +62,78 @@ export const columns: ColumnDef<Account>[] = [
   {
     header: "Email",
     accessorKey: "email",
+    cell: ({ row }) => {
+      const account = row.original;
+
+      const accountEmail = account.email;
+      const email = row.getValue("email");
+
+      return (
+        <>
+          <div>
+            <Button
+              className="font-normal"
+              variant="covert"
+              onClick={() => {
+                navigator.clipboard.writeText(accountEmail.toString());
+              }}
+            >
+              {email as string}
+            </Button>
+          </div>
+        </>
+      );
+    },
   },
 
   {
     header: "Username",
     accessorKey: "username",
+    cell: ({ row }) => {
+      const account = row.original;
+
+      const accountUser = account.username;
+      const username = row.getValue("username");
+
+      return (
+        <>
+          <div>
+            <Button
+              className="font-normal tracking-wide"
+              variant="covert"
+              onClick={() =>
+                navigator.clipboard.writeText(accountUser.toString())
+              }
+            >
+              {username as string}
+            </Button>
+          </div>
+        </>
+      );
+    },
   },
 
   {
     header: "Password",
     accessorKey: "password",
     cell: ({ row }) => {
+      const account = row.original;
+
+      const accountPass = account.password;
       const password = row.getValue("password");
+
       return (
         <>
-          <div className="font-thin">
-            <body>{password as string}</body>
+          <div>
+            <Button
+              className="font-normal tracking-wide"
+              variant="covert"
+              onClick={() =>
+                navigator.clipboard.writeText(accountPass.toString())
+              }
+            >
+              {password as string}
+            </Button>
           </div>
         </>
       );
@@ -87,6 +143,9 @@ export const columns: ColumnDef<Account>[] = [
     id: "Actions",
     cell: ({ row }) => {
       const account = row.original;
+
+      const accountEmail = account.email;
+      const accountPass = account.password;
       const accountUser = account.username;
       return (
         <DropdownMenu>
@@ -99,10 +158,24 @@ export const columns: ColumnDef<Account>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() =>
+                navigator.clipboard.writeText(accountEmail.toString())
+              }
+            >
+              Copy Email
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() =>
                 navigator.clipboard.writeText(accountUser.toString())
               }
             >
               Copy Username
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() =>
+                navigator.clipboard.writeText(accountPass.toString())
+              }
+            >
+              Copy Password
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
