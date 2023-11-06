@@ -46,7 +46,8 @@ export const columns: ColumnDef<Account>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
+          className="-px-1"
+          variant="covert"
           onClick={() => {
             column.toggleSorting(column.getIsSorted() === "asc");
           }}

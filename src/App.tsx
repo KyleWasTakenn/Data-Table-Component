@@ -1,6 +1,14 @@
 import { accounts } from "./accounts";
 import { columns } from "./accounts/columns";
 import AccountsDataTable from "./accounts/data-table";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 /* 
 TODO:
@@ -19,7 +27,19 @@ function App() {
   return (
     <>
       <div className="container py-10 mx-auto">
-        <AccountsDataTable columns={columns} data={accounts} />
+        <Card className="rounded-none">
+          <CardHeader>
+            <CardTitle className="text-center uppercase font-semibold tracking-widest">
+              Placeholder title
+            </CardTitle>
+            <CardDescription className="text-center uppercase font-thin tracking-widest">
+              Welcome, user
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <AccountsDataTable columns={columns} data={accounts} />
+          </CardContent>
+        </Card>
       </div>
     </>
   );

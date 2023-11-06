@@ -23,6 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { Input } from "@/components/ui/input";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -61,11 +62,11 @@ export function AccountsDataTable<TData, TValue>({
   return (
     <>
       {/* All Output */}
-      <div>
+      <div className="container">
         {/* Filter Input */}
-        <div className="flex items-center py-4">
+        <div className="flex justify-start py-4">
           <Input
-            placeholder="Filter App / Site Name"
+            placeholder="Search by service name:"
             value={
               (table.getColumn("service")?.getFilterValue() as string) || ""
             }
@@ -113,33 +114,34 @@ export function AccountsDataTable<TData, TValue>({
                 ))
               ) : (
                 <TableRow>
-                  <TableCell>empty</TableCell>
+                  <TableCell>No results...</TableCell>
                 </TableRow>
               )}
             </TableBody>
           </Table>
         </div>
         {/* Pages */}
-        <div className="flex items-center justify-start space-x-2 p-y-4">
+        <div className="flex container -translate-x-11 translate-y-1">
           <Button
-            variant="outline"
+            variant="covert"
             size="sm"
             onClick={() => {
               table.previousPage();
             }}
             disabled={!table.getCanPreviousPage()}
           >
-            Prev
+            <ChevronLeft strokeWidth={1} />
           </Button>
+
           <Button
-            variant="outline"
+            variant="covert"
             size="sm"
             onClick={() => {
               table.nextPage();
             }}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            <ChevronRight strokeWidth={1} />
           </Button>
         </div>
       </div>
