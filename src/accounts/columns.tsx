@@ -46,22 +46,33 @@ export const columns: ColumnDef<Account>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className="-px-1"
+          className="-px-1 font-normal tracking-widest uppercase"
           variant="covert"
           onClick={() => {
             column.toggleSorting(column.getIsSorted() === "asc");
           }}
         >
-          App / Site <ArrowDownUp className="ml-2 h-4 w-4" />
+          [service <ArrowDownUp className="ml-2 h-4 w-4" />]
         </Button>
       );
     },
+
     accessorKey: "service",
   },
 
   {
-    header: "Email",
+    header: ({}) => {
+      return (
+        <>
+          <div className="font-normal tracking-widest uppercase">
+            <body>[email]</body>
+          </div>
+        </>
+      );
+    },
+
     accessorKey: "email",
+
     cell: ({ row }) => {
       const account = row.original;
 
@@ -70,7 +81,7 @@ export const columns: ColumnDef<Account>[] = [
 
       return (
         <>
-          <div>
+          <div className="-translate-x-4">
             <Button
               className="font-normal"
               variant="covert"
@@ -87,8 +98,18 @@ export const columns: ColumnDef<Account>[] = [
   },
 
   {
-    header: "Username",
+    header: ({}) => {
+      return (
+        <>
+          <div className="font-normal tracking-widest uppercase">
+            <body>[username]</body>
+          </div>
+        </>
+      );
+    },
+
     accessorKey: "username",
+
     cell: ({ row }) => {
       const account = row.original;
 
@@ -97,7 +118,7 @@ export const columns: ColumnDef<Account>[] = [
 
       return (
         <>
-          <div>
+          <div className="-translate-x-4">
             <Button
               className="font-normal tracking-wide"
               variant="covert"
@@ -114,25 +135,37 @@ export const columns: ColumnDef<Account>[] = [
   },
 
   {
-    header: "Password",
+    header: ({}) => {
+      return (
+        <>
+          <div className="font-normal tracking-widest uppercase">
+            <body>[password]</body>
+          </div>
+        </>
+      );
+    },
+
     accessorKey: "password",
+
     cell: ({ row }) => {
       const account = row.original;
 
       const accountPass = account.password;
-      const password = row.getValue("password");
+      {
+        /*const password = row.getValue("password");*/
+      }
 
       return (
         <>
-          <div>
+          <div className="-translate-x-4">
             <Button
-              className="font-normal tracking-wide"
+              className="font-thin tracking-widest"
               variant="covert"
               onClick={() =>
                 navigator.clipboard.writeText(accountPass.toString())
               }
             >
-              {password as string}
+              ********
             </Button>
           </div>
         </>
