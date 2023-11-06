@@ -18,12 +18,14 @@ export const columns: ColumnDef<Account>[] = [
     id: "Select",
     header: ({ table }) => {
       return (
-        <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          onCheckedChange={(value) => {
-            table.toggleAllPageRowsSelected(!!value);
-          }}
-        />
+        <div className="w-auto h-auto justify-items-center">
+          <Checkbox
+            checked={table.getIsAllPageRowsSelected()}
+            onCheckedChange={(value) => {
+              table.toggleAllPageRowsSelected(!!value);
+            }}
+          />
+        </div>
       );
     },
     cell: ({ row }) => {
@@ -36,14 +38,15 @@ export const columns: ColumnDef<Account>[] = [
         />
       );
     },
+
+    enableSorting: false,
   },
 
   {
     header: ({ column }) => {
       return (
         <Button
-          className="-ml-2"
-          variant="outline"
+          variant="ghost"
           onClick={() => {
             column.toggleSorting(column.getIsSorted() === "asc");
           }}
@@ -73,7 +76,7 @@ export const columns: ColumnDef<Account>[] = [
       return (
         <>
           <div className="font-thin">
-            <text type="password">{password as string}</text>
+            <body>{password as string}</body>
           </div>
         </>
       );

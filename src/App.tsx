@@ -18,7 +18,7 @@ TODO:
 function App() {
   return (
     <>
-      <div className="p-20">
+      <div className="container py-10 mx-auto">
         <AccountsDataTable columns={columns} data={accounts} />
       </div>
     </>

@@ -38,6 +38,8 @@ export function AccountsDataTable<TData, TValue>({
     []
   );
 
+  const [rowSelection, setRowSelection] = React.useState({});
+
   const table = useReactTable({
     data,
     columns,
@@ -45,12 +47,14 @@ export function AccountsDataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    onRowSelectionChange: setRowSelection,
 
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     state: {
       sorting,
       columnFilters,
+      rowSelection,
     },
   });
 
