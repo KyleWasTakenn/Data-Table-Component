@@ -66,14 +66,14 @@ export function AccountsDataTable<TData, TValue>({
         {/* Filter Input */}
         <div className="flex justify-start py-4">
           <Input
-            placeholder="Search by service name:"
+            placeholder="Search:"
             value={
               (table.getColumn("service")?.getFilterValue() as string) || ""
             }
             onChange={(e) => {
               table.getColumn("service")?.setFilterValue(e.target.value);
             }}
-            className="max-w-sm"
+            className="max-w-sm capitalize tracking-widest font-normal"
           ></Input>
         </div>
         {/* Table */}
@@ -114,7 +114,9 @@ export function AccountsDataTable<TData, TValue>({
                 ))
               ) : (
                 <TableRow>
-                  <TableCell>No results...</TableCell>
+                  <TableCell className="font-normal tracking-widest">
+                    No results...
+                  </TableCell>
                 </TableRow>
               )}
             </TableBody>

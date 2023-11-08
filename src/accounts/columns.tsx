@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, ArrowDownUp } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/components/ui/use-toast";
 
 export const columns: ColumnDef<Account>[] = [
   {
@@ -65,7 +66,7 @@ export const columns: ColumnDef<Account>[] = [
       return (
         <>
           <div className="font-normal tracking-widest uppercase">
-            <body>[email]</body>
+            <h1>[email]</h1>
           </div>
         </>
       );
@@ -74,6 +75,8 @@ export const columns: ColumnDef<Account>[] = [
     accessorKey: "email",
 
     cell: ({ row }) => {
+      const { toast } = useToast();
+
       const account = row.original;
 
       const accountEmail = account.email;
@@ -87,6 +90,10 @@ export const columns: ColumnDef<Account>[] = [
               variant="covert"
               onClick={() => {
                 navigator.clipboard.writeText(accountEmail.toString());
+                toast({
+                  title: "Testing",
+                  description: "Testing",
+                });
               }}
             >
               {email as string}
@@ -102,7 +109,7 @@ export const columns: ColumnDef<Account>[] = [
       return (
         <>
           <div className="font-normal tracking-widest uppercase">
-            <body>[username]</body>
+            <h1>[username]</h1>
           </div>
         </>
       );
@@ -139,7 +146,7 @@ export const columns: ColumnDef<Account>[] = [
       return (
         <>
           <div className="font-normal tracking-widest uppercase">
-            <body>[password]</body>
+            <h1>[password]</h1>
           </div>
         </>
       );
@@ -189,6 +196,9 @@ export const columns: ColumnDef<Account>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => console.log("Work in progress")}>
+              Edit account info
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() =>
                 navigator.clipboard.writeText(accountEmail.toString())
