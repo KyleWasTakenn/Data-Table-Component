@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Toaster } from "./components/ui/toaster";
 
 /* 
 TODO:
@@ -26,6 +27,7 @@ function App() {
   return (
     <>
       <div className="container py-10 mx-auto">
+        <Toaster />
         <Card className="rounded-none">
           <CardHeader>
             <CardTitle className="text-center uppercase font-semibold tracking-widest">

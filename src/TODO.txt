@@ -7,7 +7,6 @@
     + BG or no BG for credential buttons?
         ++ If BG, work on a fade-in animation on-hover.
 
-- Toast popup on copying credentials.
 
 - Delete option for selected entries.
     + Will require either deleting the mock data permanently, or creating a mock backend DB for testing.
@@ -16,8 +15,9 @@
 - Modal popup for editing existing account info.
     + Added edit option in menu button, no functionality yet.
 
+- Resizable table columns
+
 
 List of components needed so far:
-- Toast popup.
 - Edit info modal.
 - Confirmation modal for deleting account info.

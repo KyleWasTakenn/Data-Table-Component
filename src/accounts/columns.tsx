@@ -76,7 +76,6 @@ export const columns: ColumnDef<Account>[] = [
 
     cell: ({ row }) => {
       const { toast } = useToast();
-
       const account = row.original;
 
       const accountEmail = account.email;
@@ -91,8 +90,9 @@ export const columns: ColumnDef<Account>[] = [
               onClick={() => {
                 navigator.clipboard.writeText(accountEmail.toString());
                 toast({
-                  title: "Testing",
-                  description: "Testing",
+                  variant: "custom",
+                  title: "Success:",
+                  description: "[Copied email to clipboard]",
                 });
               }}
             >
@@ -118,6 +118,7 @@ export const columns: ColumnDef<Account>[] = [
     accessorKey: "username",
 
     cell: ({ row }) => {
+      const { toast } = useToast();
       const account = row.original;
 
       const accountUser = account.username;
@@ -129,9 +130,14 @@ export const columns: ColumnDef<Account>[] = [
             <Button
               className="font-normal tracking-wide"
               variant="covert"
-              onClick={() =>
-                navigator.clipboard.writeText(accountUser.toString())
-              }
+              onClick={() => {
+                toast({
+                  variant: "custom",
+                  title: "Success:",
+                  description: "[Copied username to clipboard]",
+                });
+                navigator.clipboard.writeText(accountUser.toString());
+              }}
             >
               {username as string}
             </Button>
@@ -155,6 +161,7 @@ export const columns: ColumnDef<Account>[] = [
     accessorKey: "password",
 
     cell: ({ row }) => {
+      const { toast } = useToast();
       const account = row.original;
 
       const accountPass = account.password;
@@ -168,9 +175,14 @@ export const columns: ColumnDef<Account>[] = [
             <Button
               className="font-thin tracking-widest"
               variant="covert"
-              onClick={() =>
-                navigator.clipboard.writeText(accountPass.toString())
-              }
+              onClick={() => {
+                toast({
+                  variant: "custom",
+                  title: "Success:",
+                  description: "[Copied password to clipboard]",
+                });
+                navigator.clipboard.writeText(accountPass.toString());
+              }}
             >
               ********
             </Button>
@@ -187,6 +199,8 @@ export const columns: ColumnDef<Account>[] = [
       const accountEmail = account.email;
       const accountPass = account.password;
       const accountUser = account.username;
+
+      const { toast } = useToast();
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -200,23 +214,38 @@ export const columns: ColumnDef<Account>[] = [
               Edit account info
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(accountEmail.toString())
-              }
+              onClick={() => {
+                toast({
+                  variant: "custom",
+                  title: "Success:",
+                  description: "[Copied username to clipboard]",
+                });
+                navigator.clipboard.writeText(accountEmail.toString());
+              }}
             >
               Copy Email
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(accountUser.toString())
-              }
+              onClick={() => {
+                toast({
+                  variant: "custom",
+                  title: "Success:",
+                  description: "[Copied username to clipboard]",
+                });
+                navigator.clipboard.writeText(accountUser.toString());
+              }}
             >
               Copy Username
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(accountPass.toString())
-              }
+              onClick={() => {
+                toast({
+                  variant: "custom",
+                  title: "Success:",
+                  description: "[Copied password to clipboard]",
+                });
+                navigator.clipboard.writeText(accountPass.toString());
+              }}
             >
               Copy Password
             </DropdownMenuItem>
