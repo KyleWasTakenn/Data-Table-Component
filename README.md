@@ -24,6 +24,8 @@ Data table component for my ongoing password manager project.
 
 - Resizable table columns
 
+- Command menu for adding, removing, and editing accounts in database
+
 List of components needed so far:
 
 - Edit info modal.
